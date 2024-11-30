@@ -1,0 +1,127 @@
+
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="cart.css" />
+  </head>
+  <body>
+    <div class="form-container">
+      <h2>Nhập thông tin chi tiết</h2>
+      <form id="addressForm">
+        <label for="houseNumber">Số nhà:</label>
+        <input
+          type="text"
+          id="houseNumber"
+          name="houseNumber"
+          placeholder="VD: 123"
+          required
+        />
+
+        <label for="street">Đường:</label>
+        <input
+          type="text"
+          id="street"
+          name="street"
+          placeholder="VD: Nguyễn Trãi"
+          required
+        />
+
+        <label for="ward">Phường/Xã:</label>
+        <input
+          type="text"
+          id="ward"
+          name="ward"
+          placeholder="VD: Phường 5"
+          required
+        />
+
+        <label for="district">Quận/Huyện:</label>
+        <input
+          type="text"
+          id="district"
+          name="district"
+          placeholder="VD: Quận 1"
+          required
+        />
+
+        <label for="city">Tỉnh/Thành phố:</label>
+        <input
+          type="text"
+          id="city"
+          name="city"
+          placeholder="VD: TP. Hồ Chí Minh"
+          required
+        />
+        <div style="text-align: left;">
+          <label for="thanhToan">Hình thức thanh toán</label>
+          <input type="radio" name="thanhToan" id="tienMat" onchange="thayDoiCredit(this)"> Thanh toán khi nhận hàng <br/>
+          <input type="radio" name="thanhToan" id="chuyenKhoan" style="margin-bottom: 20px" onchange="thayDoiCredit(this)"> Thẻ tín dụng/Ghi nợ
+          <div id="ckChangeCredit">
+            <label for="thayDoiTheTinDung" style="display: contents; font-weight: normal; color: blue"><i>Bạn có muốn thay đổi thẻ tín dụng</i></label>
+            <input type="checkbox" name="thayDoiTheTinDung" id="thayDoiTheTinDung" style="margin-bottom: 20px">
+          </div>
+          <div id="fake_thanhToan"><div id="hienThiChuyenKhoan"></div></div>
+          <!-- <div id="hienThiChuyenKhoan"></div> -->
+        </div>
+        <button type="button" onclick="submitForm()">Xác nhận</button>
+      </form>
+    </div>
+    </div>
+    
+    <div class="cart-container">
+      <h1>Giỏ hàng của bạn</h1>
+      <!-- Danh sách các hoá đơn -->
+      <div id="bill"></div>
+      <!-- Tiêu đề bảng giỏ hàng -->
+      <div class="cart-header">
+        <div class="cart-header-item"></div>
+        <div class="cart-header-item">Tên sản phẩm</div>
+        <div class="cart-header-item">Giá</div>
+        <div class="cart-header-item">Số lượng</div>
+        <div class="cart-header-item">Size</div>
+        <div class="cart-header-item">Tổng tiền</div>
+        <div class="cart-header-item"></div>
+      </div>
+
+      <div id="cart-items" class="cart-items"></div>
+
+      <!-- Tổng tiền và các nút hành động -->
+      <div class="cart-footer">
+        <div class="cart-actions">
+          <button
+            id="clear-cart"
+            onclick=" deleteCart()"
+            class="action-btn clear-btn"
+          >
+            Xóa Tất Cả
+          </button>
+          <button
+            id="checkout"
+            class="action-btn checkout-btn"
+            onclick="buy1()"
+          >
+            Đặt hàng
+          </button>
+          <button id="donHangDaMua" class="action-btn" style="background-color: blue;" onclick="DH_da_mua()">Đơn Hàng Đã Đặt</div>
+      </div>
+        
+    <!-- <div id="fake_thanhToan"><div id="form_thanhToan"></div></div> -->
+        <!-- <h2>Thành tiền: <span id="total-payment">0</span> VND</h2> -->
+      </div>
+    </div>
+    <div id="customFailedAlert" class="custom-failed-alert">
+      <!-- Nội dung thông báo sẽ được điền vào đây -->
+    </div>
+    <div id="customSuccessfulAlert" class="custom-successful-alert">
+      <!-- Nội dung thông báo sẽ được điền vào đây -->
+    </div>
+    <div id="goHome-btn"><button type="button" onclick="goBackHome()">← Trang chủ</button>
+    </div>
+
+    <script src="cart.js"></script>
+  </body>
+</html>
+

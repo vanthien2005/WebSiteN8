@@ -1,0 +1,285 @@
+Kiến thức code cần dùng:
+        Nối biến:
+            VD: const linkURL = "src.img/";
+                const newImg = document.createElement("img");
+                newImg.src = `${linkURL}1.png`;
+                for(let i = 0; i < 10; i++)
+                {
+                    newImg.src = `${linkURL}${i}.png`;
+                }
+        Sử dụng target và currentTarget để lấy giá trị khi tác động vào phần tử
+            VD: element.target.getAttribute("data-id");
+                element.currentTarget.getAttribute("data-id");
+                
+JS DOMTutorial Tạo và Thêm Phần Tử Mới Vào DOM Với Append và Prepend
+    Append
+    Bước 1: Create Element 
+            Cú pháp: document.createElement("tag-name");    // tag-name: a, p , div, li, ....
+        VD: 
+            const newImg = document.createElement("img");
+    Bước 2: Set Attribute - set giá trị cho thẻ
+        Cách 1: newImg.setAttribute("properties", "value");
+            VD: newImg.setAttribute("src", "file.png");
+        
+        Cách 2: newImg."properties" = "value";
+            VD: newImg.src = "file.png";
+    
+    Bước 3: Append: thêm vào 1 phần tử đã có sẵn 
+            VD: document.body.append(newImg);  // Thêm vào cuối phần tử cha (trong trường hợp này là body)
+                newImg.style.width = "100vw";  // set chiều rộng 100% viewport width
+        
+        Cách thêm thêm nhiều phần tử vào cuối phần tử cha 
+            Tạo lần lượt các thẻ mới 
+            VD: const newP = document.createElement("p");
+                const newImg = document.createElement("img");
+                const newSpan = document.createElement("span");
+                p.textContent = "Đây là đoạn văn bản mới";
+                img.src = "file.png";
+                span.textContent = "Đây là đoạn văn bản thứ 2";
+                const elementFather = document.querySelector(".container"); // Truy cập đến phần tử cha
+                elementFather.append(newP, newImg, newSpan); // Thêm các thẻ và nội dung thẻ vừa tạo vào cuối thẻ cha
+
+    Prepend (tương tự append nhưng sẽ thêm phần tử vào đầu)
+
+    AppendChild
+        appendChild(): Gần giống với append, thêm 1 node con vào trong 1 phần tử cha trong DOM, tuy nhiên có 1 số điểm khác biệt
+            
+            1. Đối tượng có thể thêm
+                + appendChild() chỉ thêm được đối tượng Node.
+                + append() thêm được cả Node và chuỗi văn bản -> VD: "Đây là chuỗi văn bản"
+                    VD: const elementParent = document.querySelector(".box");
+                        const newDiv = document.createElement("div");
+                        newDiv.textContent = "Đây là nội dung thẻ Div"
+
+                        elementParent.appendChild(newDiv); -> TRUE
+                        elementParent.appendChild("Đây là nội dung thẻ div"); -> FALSE 
+
+                        elementParent.append(newDiv, "append() có thể thêm 1 lúc nhiều phần tử");
+            
+            2. Trả về giá trị 
+                + appendChild() trả về phần tử vừa được thêm
+                + append() không trả về giá trị (undefined)
+
+                    VD: const elementParent = document.querySelector(".box");
+
+                        const button = document.createElement("button");
+                        button.textContent = "Click";
+                        const clickButton = elementParent.appendChild(button);
+                        clickButton.addEventListener("click", function(){
+                            console.log("Click Button Successful");
+                        });
+
+                        const clickButton = elementParent.append(button); -> undefined 
+            
+            3. Thêm nhiều phần tử
+                + appendChild() chỉ thêm được 1 phần tử mỗi lần gọi
+                + append() có thêm nhiều lần tử hoặc chuỗi văn bản trong 1 lần gọi
+
+                    VD: const elementParent = document.querySelector(".box");
+                        const newDiv = document.createElement("div");
+                        newDiv.textContent = "Đây là nội dung thẻ Div"
+                        const newImg = document.createElement("img");
+                        newImg.src = "file.png";
+
+                        elementParent.appendChild(newDiv); -> TRUE
+                        elementParent.appendChild(newDiv, newImg); -> FALSE
+
+                        elementParent.append(newDiv, newImg, "append() có thể thêm 1 lúc nhiều phần tử"); 
+
+JS DOM | dom style javascript |Tùy chỉnh CSS thông qua JavaScript DOM
+    Cách viết khi muốn set nhiều thuộc tính CSS
+        Object.assign(element.style, {
+            backgroundColor: "value",
+            fontSize: "value",
+            color: "value",
+        });
+    Cách xử lí tốt hơn:
+        const element = document.querySelector(".box"); // Truy cập đến phần tử muốn thay đổi thuộc tính CSS
+        **Tạo 1 class bên trong file .css và code các thuộc tính muốn thay đổi element vào bên trong như bình thường
+        .newCSS{
+            background-color: red;
+            font-size: 20px;
+            color: blue;
+        }
+        element.classList.add("newCSS"); // Thêm và thay đổi thuộc tính CSS trên element
+
+    Cách lấy giá trị thật sự trên trang web hiện tại -> sử dụng window.getComputedStyle(element).properties;
+        VD1: const getElement = document.querySelector(".container");
+            window.getComputedStyle(getElement).color;
+    Trước khi set CSS cho element phải kiểm tra element có thuộc HTMLELEMENT hay không
+        VD: const element = document.querySelector(".box");
+            if(element instanceof HTMLElement)
+            {
+                element.style.backgroundColor = "value";
+                element.style.color = "yellow";
+                element.innerHTML = "value";
+            }
+JS DOM_ classlist javascript _ Quản lý Class CSS _ add, remove, toggle, replace, contains
+    classList.add() thêm một Class mới vào phần tử
+    classList.remove() xóa một Class ra khỏi phần tử
+    classList.toggle() loại bỏ 1 Class nếu nó đã tồn tại và thêm nó nếu chưa có 
+    classList.replace() thay thế một Class cũ bằng 1 Class mới
+    classList.contains() kiểm tra xem phần tử có chứa một Class cụ thể không
+        VD: const element = document.querySelector(".box"); // Truy cập đến phần tử muốn thay đổi thuộc tính CSS
+            **Tạo 1 class bên trong file .css và code các thuộc tính muốn thay đổi element vào bên trong như bình thường
+            .newCSS{
+                background-color: red;
+                ont-size: 20px;
+                color: blue;
+            }
+            console.log(element.classList); // Xem các class trong phần tử
+
+            element.classList.add("newCSS"); // Thêm và thay đổi thuộc tính CSS trên element
+        
+            console.log(element.classList.contains("newCSS")); // Kiểm tra xem có thuộc tính, lớp cụ thể có chứa trong element chưa
+
+                True: nếu đã có, console.log(element.classList.contains("newCSS")); -> TRUE vì đã add newCSS vào trong element
+                False: nếu không có, console.log(element.classList.contains("newClass")); -> FALSE vì chưa có newClass trong element
+
+            element.classList.remove("newCSS"); // Xóa một thuộc tính, lớp cụ thể ra khỏi phần tử 
+
+            element.classList.replace("newCSS", "newCSS-JS"); // Thay thế một lớp cũ bằng một lớp mới
+
+JS DOMTutorial Truy cập Parent, Child, and Siblings - Truy Cập Phần Tử Cha, Con và Anh Em JS
+    const element = document.querySelector(".box");
+
+    console.log(element.parentElement); // Truy cập đến phần tử cha là thẻ chứa bên ngoài VD: <div class = "container">Thẻ cha</div>
+    console.log(element.parentElement.parentElement); // Truy cập đến phần tử ông nội là thẻ chứa bên ngoài thẻ cha VD: <div class = "sup-container">Thẻ ông nội</div>
+
+    console.log(element.children); // Truy cập đến các phần tử con bên trong thẻ element (có thể có nhiều phần tử con)
+    -> console ra 1 mảng HTMLCollection(length)[children-1, children-2, children-3]
+    
+    console.log(element.children[0]); // Truy cập đến phần tử con đầu tiên
+    console.log(element.children[1]); // Truy cập đến phần tử con thứ hai
+    console.log(element.children[2]); // Truy cập đến phần tử con thứ ba
+
+    console.log(element.children[1].nextElementSibling); // Truy cập đến phần tử con anh em kế tiếp của [1] -> [2]
+    console.log(element.children[1].previousElementSibling); // Truy cập đến phần tử con anh kế trước đó của [1] -> [0] 
+
+Event JS DOM Level 0 Event Handling Trong JavaScript
+ Bước 1: Truy cập đến phần tử muốn onlick, cập nhật sự kiện
+    const wantToOnClick = document.querySelector('.box-container');
+ Bước 2: Viết hàm xử lí sự kiện onclick vào gán lại vào phần tử khi click vào sẽ thực hiện sự kiện
+    function onlickEvent(){   // Có thể truyền tham số vào để xử lí hoặc không
+        alert("Bạn đã thực hiện sự kiện onclick");
+    }
+
+    wantToOnClick = onclickEvent; // nếu thêm dấu () sau khi gọi hàm ở đây thì sự kiện sẽ thực hiện ngay lập tức trước khi mình click vào => không có dấu()
+        
+Tổng quát: Khi thực hiện viết hàm sự kiện cần có:
+    const element = document.properties(); // Truy cập vào phần tử muốn thực hiện sự kiện    
+    function name-function() {  // Truyền tham số nếu cần VD: function name-function(value) 
+        Xử lí sự kiện
+    }
+
+    element.properties = name-function;
+        properties = {onlick, onload, onmouseover, onmouseout} 
+
+Nhược điểm:
+    . Không thể gán nhiều sự kiện cho cùng một phần tử và cùng một loại sự kiện
+    . Khó bảo trì khi số lượng phần tử và sự kiện lớn 
+    . Khi có nhiều sự kiện thì chỉ thực thi sự kiện cuối cùng và bỏ qua những sự kiện trước đó
+
+Event JS addEventListener Trong JavaScript
+    addEventListener: sử dụng để gọi function khi mà sự kiện được chỉ định xảy ra 
+        Cú pháp: 
+            element.addEventListener(event, function, options)
+                element: phần tử muốn thêm sự kiện
+                event: tên sự kiện
+                function: hàm xử lí 
+                options: tùy chọn
+    
+    Cách sử dụng và VD: function expresstion
+        Bước 1: Truy cập đến phần tử muốn thực hiện sự kiện 
+            const wantToAddEvent = document.querySelector('.box-container');
+        Bước 2: Viết hàm addEventListener và viết code xử lí sự kiện bên trong
+            wantToAddEvent.addEventListnner("click", function(){
+                Xử lí sự kiện bên trong này
+            });
+
+    Tổng quát:
+        const element = document.properties(); // Truy cập vào phần tử muốn thực hiện sự kiện addEventListener
+        element.addEventListener("properties", function(){
+            Code xử lí thực hiện sự kiện
+        });
+                properties = {click}
+    Ưu điểm:
+        . Sẽ không bị ghi đè và sẽ thực hiện lần lượt từng sự kiện 
+    
+    
+Event JS Sử dụng từ khóa 'this' để tối ưu hóa code
+
+            this: là đối tượng hiện tại đang tham chiếu đến
+        VD: 
+            // Hàm random màu sắc
+            function randomColor(){
+            const r = Math.floor(Math.random() * 256);
+            const g = Math.floor(Math.random() * 256);
+            const b = Math.floor(Math.random() * 256);
+            return `rgb(${r}, ${g}, &{b})`;
+        }
+            
+            const elements = document.querySelectorAll('.button');
+            const elenments-2 = document.querySelectorAll('.button-2');
+
+            function changeColor(){
+                this.style.backgroundColor = randomColor();
+                this.style.color = randomColor();
+            }
+            // Mỗi lần click vào thay đổi màu nền và màu chữ 
+            for (let element of elements)
+            {
+                element.addEventListener("click", changeColor);
+            }
+            // Mỗi lần click vào thay đổi màu nền và màu chữ 
+            for (let element-2 of elements-2)
+            {
+                element-2.addEventListener("click", changeColor);
+            }
+
+ Event JS Event Object and keyboard events trong JavaScript
+    Hàm callback
+        VD: const element = document.querySelector('.element');
+            element.addEventListener("click", function(event){
+                console.log(event);
+            })
+        
+        1. Ở ví dụ trên, chúng ta sử dụng addEventListener để lắng nghe sự kiện 'click' trên phần tử element. Khi sự kiện
+            'click' xảy ra, hàm callback (function(event)) sẽ được gọi và event chứa tất cả thông tin về sự kiện đó
+
+            2. Tham số của callback function có thể đặt tên bất kì, nhưng sẽ thường đặt là event hoặc e 
+
+                3. Callback function là một hàm được truyền vào 1 hàm khác dưới dạng tham số. Khi sự kiện xảy ra, hàm chính sẽ gọi đến
+                hàm callback đó
+
+Event JS _ Cách Sử Dụng preventDefault() **Quan trọng
+    preventDefault(): ngăn chặn hành vi mặc định của 1 sự kiện
+    VD điển hình: ngăn ngừa không cho form chuyển hướng khi submit
+                  ngăn ngừa thẻ a chứa liên kết chuyển hướng trang
+        VD: const form = document.querySelector('#form'); 
+            form.addEventListener('submit', function(event){
+                event.preventDefault();
+            });
+
+    VD thực tế: 
+    <form action = "./login" id = "login">
+        <input type = "text" id = "username" placeholder = "Enter Your Name">
+        <input type = "password" id = "password" placeholder = "Your Password">
+        <input type = "submit" value = "Submit">  
+    </form>
+    <ul id = "listUser"> List Username </ul>
+    <script>
+    const form = document.querySelector("#login");
+    const userName = document.querySelector('#username');
+    const passWord = document.querySelector('#password');
+    const listUser = document.querySelector('#listUser');
+    form.addEventListener("submit", function(event){
+        event.preventDefault();
+        console.log(userName.value);                // Lấy ra nội dung đã nhập 
+        const newLi = document.createElement("li"); // Tạo thẻ li mới
+        newLi.innerText = userName.value;           // Hiện nội dung lên trang web
+        list.append(newLi);                         // Thêm nội dung vào vị trí (VD: thêm vào cuối thẻ ul cha đã tạo) 
+        username.value = "";                        // Reset lại chuỗi rỗng mỗi khi submit
+        passWord.value = "";                        // Reset lại pass rỗng mỗi khi submit   
+    })
+    </script>

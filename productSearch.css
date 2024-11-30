@@ -1,0 +1,72 @@
+.detailProductSearch {
+  margin-top: 90px;
+}
+.otherTypeSearch {
+  margin-top: 120px;
+  margin-left: 50px;
+}
+.otherTypeSearch article {
+  margin: 10px 0px 10px 40px;
+  display: inline-block;
+}
+.managerListType {
+  display: flex;
+  justify-content: space-around;
+}
+/* .allProductShoes {
+    margin-top: 15px;
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 40px;
+    margin-right: 40px;
+    border: 1px solid black;
+  } */
+/* .allProductShoes article {
+    margin: 10px 0px 10px 40px;
+    display: inline-block;
+  } */
+.managerListType a {
+  font-size: 25px;
+  margin-top: 5px;
+  color: aliceblue;
+}
+.managerImg {
+  position: relative;
+}
+.managerImg img:last-child {
+  position: absolute;
+  left: 0;
+  top: -265px;
+  display: none;
+}
+.managerImg:hover img:last-child {
+  display: block;
+}
+.managerImg img {
+  width: 280px;
+  height: 280px;
+}
+.managerContent {
+  font-size: 20px;
+  display: inline-block;
+  width: 280px;
+  color: aliceblue;
+}
+.managerContent p:first-child {
+  overflow-wrap: break-word;
+  height: 40px;
+}
+.managerContent p:first-child {
+  margin-top: 5px;
+}
+.managerContent p:last-child {
+  margin-top: 7px;
+}
+.backHome {
+  margin-left: 40px;
+  font-size: 35px;
+  width: 70px;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+}

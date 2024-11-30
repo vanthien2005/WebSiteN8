@@ -1,0 +1,211 @@
+.imgLogin {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: -1;
+  width: 100%;
+}
+#login {
+  position: relative;
+  height: 100vh;
+  /* border: 3px solid lime; */
+}
+#contain {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  /* border: 3px solid red; */
+  text-align: center;
+  padding: 5% 5%;
+  background-color: rgba(0, 0, 0, 0.541);
+}
+/* input {
+  width: 50%;
+  color: white;
+} */
+/* input[type="text"],
+input[type="tel"] {
+  margin: 5px 5px;
+
+  display: flex;
+  margin-top: 30px;
+  width: 100%;
+  background: none;
+  border: 3px solid white;
+  height: 50px;
+} */
+#user,
+#password {
+  padding-top: 20px;
+  width: 300px;
+  display: flex;
+  margin-top: 30px;
+  color: white;
+  border-radius: 10px;
+  padding-bottom: 15px;
+}
+/* input[type="password"] {
+  width: 50%;
+  margin-top: 30px;
+  background: none;
+  border: 3px solid white;
+  height: 50px;
+} */
+input[type="text"]:placeholder-shown,
+input[type="password"]:placeholder-shown,
+input[type="tel"] {
+  font-weight: bold;
+}
+#ps {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+#dieuHuong:hover {
+  background-color: red;
+}
+
+#username,
+#user1,
+#password1,
+#password_again,
+#telephone {
+  display: flex;
+  margin-top: 20px;
+  padding-top: 25px;
+  border-radius: 10px;
+  color: white;
+}
+#telephone {
+  background: none;
+  border-bottom: 2px solid white;
+}
+#P,
+#K {
+  margin-top: 50px;
+  border-radius: 99px;
+  width: 40%;
+  height: 40px;
+  background: none;
+  color: white;
+  border: 3px solid white;
+}
+#P:hover,
+#K:hover {
+  background-color: rgba(0, 255, 0, 0.5);
+  cursor: pointer;
+}
+#i {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: -1;
+}
+#login {
+  width: 100%;
+  color: white;
+  font-family: sans-serif;
+  position: relative;
+  height: 100vh;
+  /* border: 3px solid lime; */
+}
+#contain {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  /* border: 3px solid red; */
+  text-align: center;
+  padding: 5% 5%;
+  background-color: rgba(0, 0, 0, 0.541);
+}
+/* input {
+  margin: 3% 3%;
+  width: 50%;
+  color: white;
+  display: inline-block;
+} */
+input[type="text"] {
+  width: 100%;
+  background: none;
+  border-bottom: 2px solid white;
+}
+input[type="password"] {
+  width: 100%;
+  background: none;
+  border-bottom: 2px solid white;
+}
+#signin {
+  text-align: left;
+  margin-left: 10px;
+  margin-top: 30px;
+}
+#signin span {
+  padding: 5px 3px;
+}
+#link {
+  color: white;
+  text-decoration: underline;
+}
+#link:hover {
+  color: red;
+}
+#P {
+  margin-top: 50px;
+  width: 50%;
+  height: 40px;
+  background: none;
+  color: white;
+  border: 3px solid white;
+}
+#b:hover {
+  background-color: rgba(0, 255, 0, 0.5);
+  cursor: pointer;
+}
+.input-container {
+  position: relative;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+/* Icon nằm bên trong input */
+.input-container i {
+  position: absolute;
+  top: 50%;
+  left: 5px; /* Khoảng cách icon từ cạnh trái */
+  transform: translateY(-50%);
+  font-size: 14px; /* Kích thước icon */
+  color: #666;
+  padding-bottom: 15px;
+}
+
+/* Input có khoảng trống cho icon */
+.input-container input {
+  width: 100%;
+  padding: 10px 10px 0px 40px; /* Khoảng trống bên trái để chứa icon */
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-sizing: border-box; /* Đảm bảo padding không làm to input */
+}
+
+/* Hiệu ứng khi focus vào input */
+.input-container input:focus {
+  border-color: #007bff;
+  outline: none;
+}
+#acc {
+  color: white;
+  padding-top: 20px;
+  margin-top: 5px;
+}
+#bye,
+#bye1 {
+  display: flex;
+  margin-top: 5px;
+  padding: 5px;
+  flex-direction: row;
+  justify-content: center;
+  border-radius: 10px;
+}
